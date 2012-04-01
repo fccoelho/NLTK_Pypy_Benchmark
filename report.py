@@ -38,18 +38,19 @@ def save_time(version, line):
 
 def add_line(line):
     with open('README.md','a') as f:
-        if isinstance(line,list):
-            f.writelines(line)
-        else:
-            f.writelines([line])
+        f.write(line)
+
 
 def build():
     with open('pypy.times','r') as g:
-        g.readline()
+        dat = g.readline().strip()
         plines = g.readlines()
     with open('cpy.times','r') as h:
         h.readline()
         clines = h.readlines()
     for pl,cl in zip(plines,clines):
-        add_line(pl)
-        add_line(cl)
+        add_line('=='+dat+'=='+'\n\n')
+        bname = pl.split(':')[1]
+        add_line('* '+bname+'\n')
+        add_line('    '+pl.split(':')[0]+pl.split(':')[2])
+        add_line('    '+cl.split(':')[0]+cl.split(':')[2])

@@ -48,7 +48,7 @@ def timefun(fun):
         te = time()
         tt = te-ts
         unmute()
-        report.save_time(version,'* %s: %s: %s\n'%(version,fun.__name__ , tt))
+        report.save_time(version,'* _%s_: %s: %s\n'%(version,fun.__name__ , tt))
         print '%r  %2.2f sec' %(fun.__name__ , tt)
         return result
     return timed
