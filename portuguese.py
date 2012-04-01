@@ -6,13 +6,15 @@ This module contains some selected code from NLTK testing pages:
 
 this may required the downloads of some nltk data to run.
 """
+import sys
+import codecs
+import report
 from time import time
 import nltk
 from nltk import *
 from nltk.examples.pt import *
 from nltk import grammar, parse
 from nltk.parse.featurechart import InstantiateVarsChart
-
 
 
 sent_tokenizer=nltk.data.load('tokenizers/punkt/portuguese.pickle')
@@ -22,17 +24,32 @@ raw_text3 = machado.raw('romance/marm03.txt')
 
 cp = parse.load_parser('grammars/book_grammars/feat0.fcfg', trace=1)
 
+## Checking version of the benchmarking
+if 'PyPy' in sys.version:
+    version = 'PyPy 1.8'
+else:
+    version = 'CPython 2.7.2'
+
+report.setup('PyPy' in version)
+
+def mute():
+    sys.stdout = codecs.open('/dev/null','w','utf8') #use codecs to avoid decoding errors
+def unmute():
+    sys.stdout = sys.__stdout__
 
 def timefun(fun):
     """
     Decorator to time functions
     """
     def timed(*args, **kw):
+        mute()
         ts = time()
         result = fun(*args, **kw)
         te = time()
-
-        print '%r  %2.2f sec' %(fun.__name__ , te-ts)
+        tt = te-ts
+        unmute()
+        report.save_time(version,'* %s: %s: %s\n'%(version,fun.__name__ , tt))
+        print '%r  %2.2f sec' %(fun.__name__ , tt)
         return result
     return timed
 
@@ -89,11 +106,15 @@ def feat_grammar_parse_bench():
 #    trees = cp2.nbest_parse('john feeds a dog. The dog barks'.split())
 
 if __name__=="__main__":
-#    concordance_bench()
-#    similar_bench()
-#    collocations_bench()
-#    generate_bench()
+    concordance_bench()
+    similar_bench()
+    collocations_bench()
+    generate_bench()
     freqdist_bench()
     sent_tokenizer_bench()
     feat_grammar_parse_bench()
 #    feat_grammar_parse_wbind_bench()
+
+if 'PyPy' in version:
+    print "building report:"
+    report.build()
