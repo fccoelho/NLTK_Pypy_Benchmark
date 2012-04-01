@@ -16,13 +16,13 @@ from nltk.examples.pt import *
 from nltk import grammar, parse
 from nltk.parse.featurechart import InstantiateVarsChart
 
-
 sent_tokenizer=nltk.data.load('tokenizers/punkt/portuguese.pickle')
 raw_text1 = machado.raw('romance/marm05.txt')
 raw_text2 = machado.raw('romance/marm04.txt')
 raw_text3 = machado.raw('romance/marm03.txt')
 
 cp = parse.load_parser('grammars/book_grammars/feat0.fcfg', trace=1)
+stemmer = nltk.stem.RSLPStemmer()
 
 ## Checking version of the benchmarking
 if 'PyPy' in sys.version:
@@ -48,8 +48,8 @@ def timefun(fun):
         te = time()
         tt = te-ts
         unmute()
-        report.save_time(version,'* _%s_: %s: %s\n'%(version,fun.__name__ , tt))
-        print '%r  %2.2f sec' %(fun.__name__ , tt)
+        report.save_time(version,'* _%s_: %s: %2.4f seconds\n'%(version,fun.__name__ , tt))
+        print '%r  %2.4f sec' %(fun.__name__ , tt)
         return result
     return timed
 
@@ -101,6 +101,16 @@ def feat_grammar_parse_bench():
     tokens = sent.split()
     trees = cp.nbest_parse(tokens)
 
+@timefun
+def confusion_matrix_bench():
+    reference = 'This is the reference data.  Testing 123.  aoaeoeoe'
+    test =      'Thos iz_the rifirenci data.  Testeng 123.  aoaeoeoe'
+    ConfusionMatrix(raw_text1,raw_text1)
+
+@timefun
+def stemming_bench():
+    [stemmer.stem(w) for w in machado.words('romance/marm05.txt')]
+
 #@timefun
 #def feat_grammar_parse_wbind_bench():
 #    trees = cp2.nbest_parse('john feeds a dog. The dog barks'.split())
@@ -114,6 +124,8 @@ if __name__=="__main__":
     sent_tokenizer_bench()
     feat_grammar_parse_bench()
 #    feat_grammar_parse_wbind_bench()
+    confusion_matrix_bench()
+    stemming_bench()
 
 if 'PyPy' in version:
     print "building report:"

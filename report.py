@@ -43,14 +43,15 @@ def add_line(line):
 
 def build():
     with open('pypy.times','r') as g:
-        dat = g.readline().strip()
+        dat = g.readline().strip() #get datetime line
         plines = g.readlines()
     with open('cpy.times','r') as h:
         h.readline()
         clines = h.readlines()
+
+    add_line('=='+dat+'=='+'\n\n')
     for pl,cl in zip(plines,clines):
-        add_line('=='+dat+'=='+'\n\n')
         bname = pl.split(':')[1]
         add_line('* '+bname+'\n')
-        add_line('    '+pl.split(':')[0]+pl.split(':')[2])
-        add_line('    '+cl.split(':')[0]+cl.split(':')[2])
+        add_line('    '+pl.split(':')[0]+': '+pl.split(':')[2])
+        add_line('    '+cl.split(':')[0]+': '+cl.split(':')[2])
