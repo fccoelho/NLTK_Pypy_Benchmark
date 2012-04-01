@@ -5,32 +5,32 @@ Benchmarking NLTK under Pypy
 Times for both Cpython 2.72 and PyPy 1.8
 ----------------------------------------
 
-==Sun Apr  1 10:36:23 2012==
+==Sun Apr  1 11:01:22 2012==
 
 *  concordance_bench
-    * _PyPy 1.8_:  0.0924 seconds
-    * _CPython 2.7.2_:  0.1992 seconds
+    * _PyPy 1.8_:  0.0978 seconds
+    * _CPython 2.7.2_:  0.2041 seconds
 *  similar_bench
-    * _PyPy 1.8_:  2.6458 seconds
-    * _CPython 2.7.2_:  2.6849 seconds
+    * _PyPy 1.8_:  2.5432 seconds
+    * _CPython 2.7.2_:  2.6919 seconds
 *  collocations_bench
-    * _PyPy 1.8_:  5.8604 seconds
-    * _CPython 2.7.2_:  6.0382 seconds
+    * _PyPy 1.8_:  5.2469 seconds
+    * _CPython 2.7.2_:  5.6797 seconds
 *  generate_bench
-    * _PyPy 1.8_:  1.5353 seconds
-    * _CPython 2.7.2_:  5.2505 seconds
+    * _PyPy 1.8_:  1.5103 seconds
+    * _CPython 2.7.2_:  5.0527 seconds
 *  freqdist_bench
-    * _PyPy 1.8_:  0.1016 seconds
-    * _CPython 2.7.2_:  0.7280 seconds
+    * _PyPy 1.8_:  0.1000 seconds
+    * _CPython 2.7.2_:  0.7145 seconds
 *  sent_tokenizer_bench
-    * _PyPy 1.8_:  2.4179 seconds
-    * _CPython 2.7.2_:  0.7640 seconds
+    * _PyPy 1.8_:  2.3717 seconds
+    * _CPython 2.7.2_:  0.7688 seconds
 *  feat_grammar_parse_bench
-    * _PyPy 1.8_:  0.0196 seconds
-    * _CPython 2.7.2_:  0.0061 seconds
+    * _PyPy 1.8_:  0.0181 seconds
+    * _CPython 2.7.2_:  0.0063 seconds
 *  confusion_matrix_bench
-    * _PyPy 1.8_:  0.8035 seconds
-    * _CPython 2.7.2_:  0.2754 seconds
+    * _PyPy 1.8_:  0.8159 seconds
+    * _CPython 2.7.2_:  0.2862 seconds
 *  stemming_bench
-    * _PyPy 1.8_:  1.2130 seconds
-    * _CPython 2.7.2_:  4.3075 seconds
+    * _PyPy 1.8_:  1.2112 seconds
+    * _CPython 2.7.2_:  4.3052 seconds
