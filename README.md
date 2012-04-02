@@ -2,6 +2,8 @@
 Benchmarking NLTK under Pypy
 ============================
 
+See also this post: http://pyinsci.blogspot.com.br/2012/04/benchmarking-nltk-under-pypy.html
+
 Times for both Cpython 2.72 and PyPy 1.8
 ----------------------------------------
 
