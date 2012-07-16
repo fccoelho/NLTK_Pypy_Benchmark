@@ -10,6 +10,8 @@ import sys
 import codecs
 import report
 from time import time
+if 'PyPy' in sys.version:
+    import numpypy #important to make numpy import in NLTK work
 import nltk
 from nltk import *
 from nltk.examples.pt import *
@@ -26,7 +28,7 @@ stemmer = nltk.stem.RSLPStemmer()
 
 ## Checking version of the benchmarking
 if 'PyPy' in sys.version:
-    version = 'PyPy 1.8'
+    version = 'PyPy 1.9'
 else:
     version = 'CPython 2.7.2'
 
@@ -119,7 +121,7 @@ if __name__=="__main__":
     concordance_bench()
     similar_bench()
     collocations_bench()
-    generate_bench()
+    #generate_bench()
     freqdist_bench()
     sent_tokenizer_bench()
     feat_grammar_parse_bench()
@@ -130,3 +132,4 @@ if __name__=="__main__":
 if 'PyPy' in version:
     print "building report:"
     report.build()
+

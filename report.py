@@ -31,7 +31,7 @@ def setup(pypy=False):
 
 
 def save_time(version, line):
-    if version == 'PyPy 1.8':
+    if 'PyPy' in version:
         with open('pypy.times','a') as g:
             g.write(line)
     else:
