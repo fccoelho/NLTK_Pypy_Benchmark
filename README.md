@@ -7,29 +7,53 @@ See also this post: http://pyinsci.blogspot.com.br/2012/04/benchmarking-nltk-und
 Times for both Cpython 2.72 and PyPy 1.8
 ----------------------------------------
 
-==Mon Jul 16 10:49:50 2012==
+==Thu Feb  1 09:24:58 2018==
 
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  concordance_bench
-    * _PyPy 1.9_:  0.0826 seconds
-    * _CPython 2.7.2_:  0.1758 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.0962 seconds
+    [GCC 7.2.0]_:  0.1217 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  similar_bench
-    * _PyPy 1.9_:  2.2209 seconds
-    * _CPython 2.7.2_:  2.4053 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  1.1685 seconds
+    [GCC 7.2.0]_:  2.0291 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  collocations_bench
-    * _PyPy 1.9_:  4.5280 seconds
-    * _CPython 2.7.2_:  4.8633 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.3302 seconds
+    [GCC 7.2.0]_:  0.7898 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  freqdist_bench
-    * _PyPy 1.9_:  0.0794 seconds
-    * _CPython 2.7.2_:  0.6239 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.0452 seconds
+    [GCC 7.2.0]_:  0.2823 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  sent_tokenizer_bench
-    * _PyPy 1.9_:  2.2404 seconds
-    * _CPython 2.7.2_:  0.6519 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.5008 seconds
+    [GCC 7.2.0]_:  0.4100 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  feat_grammar_parse_bench
-    * _PyPy 1.9_:  0.0128 seconds
-    * _CPython 2.7.2_:  0.0054 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.0102 seconds
+    [GCC 7.2.0]_:  0.0040 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  confusion_matrix_bench
-    * _PyPy 1.9_:  0.3311 seconds
-    * _CPython 2.7.2_:  0.2303 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.2307 seconds
+    [GCC 7.2.0]_:  0.1814 seconds
+* 08
+    * _PyPy 3.3.5 (619c0d5af0e5, Oct 08 2016, 21: 33)
+    * _CPython 3.6.3 (default, Oct  3 2017, 21: 48) 
 *  stemming_bench
-    * _PyPy 1.9_:  1.1121 seconds
-    * _CPython 2.7.2_:  3.8277 seconds
+    [PyPy 5.5.0-alpha0 with GCC 4.8.2]_:  0.6291 seconds
+    [GCC 7.2.0]_:  3.4938 seconds

@@ -10,11 +10,11 @@ import sys
 import codecs
 import report
 from time import time
-if 'PyPy' in sys.version:
-    import numpypy #important to make numpy import in NLTK work
+# if 'PyPy' in sys.version:
+    # import numpypy #important to make numpy import in NLTK work
 import nltk
 from nltk import *
-from nltk.examples.pt import *
+from nltk.corpus import machado
 from nltk import grammar, parse
 from nltk.parse.featurechart import InstantiateVarsChart
 
@@ -23,14 +23,19 @@ raw_text1 = machado.raw('romance/marm05.txt')
 raw_text2 = machado.raw('romance/marm04.txt')
 raw_text3 = machado.raw('romance/marm03.txt')
 
+ptext1 = nltk.Text(machado.words('romance/marm01.txt'))
+ptext2 = nltk.Text(machado.words('romance/marm02.txt'))
+ptext3 = nltk.Text(machado.words('romance/marm03.txt'))
+ptext4 = nltk.Text(machado.words('romance/marm04.txt'))
+
 cp = parse.load_parser('grammars/book_grammars/feat0.fcfg', trace=1)
 stemmer = nltk.stem.RSLPStemmer()
 
 ## Checking version of the benchmarking
 if 'PyPy' in sys.version:
-    version = 'PyPy 1.9'
+    version = 'PyPy {}'.format(sys.version)
 else:
-    version = 'CPython 2.7.2'
+    version = 'CPython {}'.format(sys.version)
 
 report.setup('PyPy' in version)
 
@@ -51,7 +56,7 @@ def timefun(fun):
         tt = te-ts
         unmute()
         report.save_time(version,'* _%s_: %s: %2.4f seconds\n'%(version,fun.__name__ , tt))
-        print '%r  %2.4f sec' %(fun.__name__ , tt)
+        print ('%r  %2.4f sec' %(fun.__name__ , tt))
         return result
     return timed
 
@@ -65,7 +70,7 @@ def concordance_bench():
 
 @timefun
 def similar_bench():
-    s=ptext1.similar('chegar')
+    s = ptext1.similar('chegar')
     ptext2.similar('chegar')
     ptext3.similar('chegar')
     ptext4.similar('chegar')
@@ -101,7 +106,7 @@ def sent_tokenizer_bench():
 def feat_grammar_parse_bench():
     sent = 'Kim likes children'
     tokens = sent.split()
-    trees = cp.nbest_parse(tokens)
+    trees = cp.parse_all(tokens)
 
 @timefun
 def confusion_matrix_bench():
@@ -130,6 +135,6 @@ if __name__=="__main__":
     stemming_bench()
 
 if 'PyPy' in version:
-    print "building report:"
+    print ("building report:")
     report.build()
 
